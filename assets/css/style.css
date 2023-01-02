@@ -2,9 +2,14 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
     
 }
-
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .score{
     position: absolute;
     top: 10px;
@@ -20,6 +25,7 @@
 .introduction{
     text-align: center;
     display: block;
+    margin: 8px;
 }
 
 button{

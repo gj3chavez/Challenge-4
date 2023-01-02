@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <div class="score">
-        <a href="score.html">View Highscores</a>
-    </div>
-        <div class="timer"> Time:    <span id ="time"></span>
+    <header>
+        <div class="score">
+            <a href="score.html">View Highscores</a>
         </div>
-        
+        <div class="timer"> Time:   <span id ="time"></span>
+        </div>
+    </header>   
   <!------ Introduction section-------->
     <div class="introduction">
             <div id="intro-page" class="intro-page">
@@ -24,20 +25,61 @@
                         Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score by ten seconds!</p>
 
 
-                    <button id="start">START QUIZ</button>
+                    <button class = "button" id ="start">START QUIZ</button>
             </div>
+<!-------------Questions section-------->
           
-            <div id="question-page" class="question-page">
-                <h2 id=""></h2>
-                
+            <div>
                 <div>
+                    <h2 id="the-questions">The questions</h2>
+                    <ul>
+                        <li>
+                        <button class="options" id="btnanswer1" value="a">Answer1</button>
+                        </li>
+                        <li>
+                        <button class="options" id="btnanswer2" value="a">Answer2</button>
+                        </li>
+                        <li>
+                        <button class="options" id="btnanswer3" value="a">Answer3</button>
+                        </li>
+                        <li>
+                        <button class="options" id="btnanswer4" value="a">Answer4</button>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div id="finish" class="hide">
+                    <div class="finish">
+                    <div id="final-score">
+                        <h2>All done!</h2>
+                </div>
+                <form id="initials" class = "initials">
+                    <p>Enter Initials:  
+                        <input type="text" name="initials" class ="text-input">
+                        <button class="finish-button" id="score" type="summit">Submit</button>
+                    </p>
+                </form>  
+            </div>
+            <div id="score" class="hide">
+                <div class="highscores">
+                    <h1 class="highscore">High Scores</h1>
+                    <ol id="highscore-list" class="list"></ol>
+                    <div>
+                        <button class="button-gb" id="go-back">Go back</button>
+                        <button class="button-gb" id="clear-hs">Clear high scores</button>
+                    </div>
+                </div>
+            </div>
+            <div id="feedback" class="feedback-c-w"></div>
     
 
    
-    <div id="quizContainer"></div>
+    </div>
     
     
-    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
