@@ -8,64 +8,68 @@ var scoreForm = document.getElementById("#initials");
 var highScoreList = document.getElementById("#highscore-list");
 var goBackButton = document.getElementById("#go-back");
 var clearHSButton = document.getElementById("#clear-hs");
-var feedback = document.getElementById("#feedback");
+var feedbackEl = document.getElementById("feedback");
 var timer = document.querySelector("#time");
+var questionEl = document.querySelector("#question");
 
 
 //-------------------Questions---------------------------------
 var questions =[
     {
         question: "Commonly used data types DO NOT Include:",
-        options: {"a.booleans", "b.strings", "c.numbers", "d.alerts"},
-        correctAnswer: "d"
-}
+        options: ["a.booleans", "b.strings", "c.numbers", "d.alerts"],
+        correctAnswer: "d.alerts"
+},
     {
         question: "The condition in an if/else statement is enclosed within____.",
-        options: {"a.quotes", "b.curly brackets", "c.parenthesis", "d.square backets"},
-        correctAnswer: "b"
+        options: ["a.quotes", "b.curly brackets", "c.parenthesis", "d.square backets"],
+        correctAnswer: "b.curly brackets"
 
-}
+},
     {
         question: "Arrays in JavaScript can be used to store:",
-        options: {"a.booleans", "b.numbers and strings", "c.other arrays", "d.all of the avobe"},
-        correctAnswer: "d"
-    }
+        options: ["a.booleans", "b.numbers and strings", "c.other arrays", "d.all of the avobe"],
+        correctAnswer: "d.all of the avobe"
+    },
     {
         question: "String values must be enclosed within_____ when being assigned to variables.",
-        options: {"a.commas", "b.curly brackets", "c.quotes", "d.parenthesis"},
-        correctAnswer: "c"
-    }
+        options: ["a.commas", "b.curly brackets", "c.quotes", "d.parenthesis"],
+        correctAnswer: "c.quotes"
+    },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        options: {"a.JavaScript", "b.terminal/bash", "c.for loops", "d.console.log"},
-        correctAnswer: "d"
-    }
+        options: ["a.JavaScript", "b.terminal/bash", "c.for loops", "d.console.log"],
+        correctAnswer: "d.console.log"
+    },
 ]
 startBtn.addEventListener("click", function(){
     document.getElementById("time").style.display = "flex";
     document.getElementById("intro-section").style.display = "none";
-    document.getElementById("the-questions").style.display = "flex";
+    document.getElementById("the-questions").style.display = "none";
+   
     setTimer();
+    displayQuestion()
 })
 //-------------start timer------------
 
 var timeLeft = 60;
-var timer = document.querySelector(".time");
+var timer = document.querySelector("#time");
 
 function setTimer(){
-
-} timerInterval = setInterval(function(){
-    timeLeft--;
-    timer.textContent = timeLef;
-     
-    if (timer<= 0){
-        endQuiz();
-    }
-},1000);
-
-
+    timerInterval = setInterval(function(){
+        timeLeft--;
+        timer.textContent = timeLeft;
+         
+        if (timer<= 0){
+            endQuiz();
+        }
+    },1000);
+    
+} 
+let currentQuestion = 0;
 //---display first question-----
-displayQuestion();
+//displayQuestion();
+
 
 
 
@@ -74,13 +78,19 @@ function displayQuestion(){
     var { question, options, correctAnswer} =
 questions[currentQuestion];
 
-    questionEl.querySelector("h2").textContent = question;
+document.getElementById('the-questions').style.display = "block"
+document.getElementById('finish').style.display = "none";
 
-    Object.keys(options).forEach(function(key){
-        var btn = questionEl.querySelector('#btnanswer${key}');
+    questionEl.textContent = question;
+
+    options.forEach(function(data,key){
+        console.log("The key is "+ key)
+        var btn = document.querySelector(`#btnanswer${key+1}`);
+        console.log (document.querySelector(`#btnanswer${key+1}`))
         btn.textContent = options[key];
 
         btn.addEventListener("click", function(){
+            console.log(key)
             checkAnswer(key);
         });
     });
@@ -92,7 +102,7 @@ function checkAnswer(userAnswer){
 questions[currentQuestion].correctAnswer;
 
 if (userAnswer=== correctAnswer){
-    feedbackEl.textContent = "Correct!";
+   feedbackEl.textContent = "Correct!";
     score++;
 }
 else {

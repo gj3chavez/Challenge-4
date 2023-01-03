@@ -54,5 +54,7 @@ button{
    border-radius: 5px;
    border: 0;
 }
-
+.hide{
+    display: none;
+}
 
