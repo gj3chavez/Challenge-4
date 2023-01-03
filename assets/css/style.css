@@ -46,7 +46,7 @@ body{
 button{
     display: inline-block;
     color: white;
-    font: 16px;
+    font-size: 100%;
     cursor: pointer;
    background-color: rgb(223, 214, 80);
    margin: 5px;
