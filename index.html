@@ -15,35 +15,36 @@
         </div>
         <div class="timer"> Time:   <span id ="time"></span>
         </div>
-    </header>   
+    </header> 
+    
   <!------ Introduction section-------->
+    
+  <main>
     <div class="introduction">
-            <div id="intro-section" class="intro-section">
+            <div id="introSection" class="intro-section">
                 
                     <h1> Coding Quiz Challenge</h1>
-                    <p>
+                    <p id="instructions">
                         Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score by ten seconds!</p>
-
-
-                    <button class = "button" id ="start">Start Quiz</button>
+                    <button class = "button" id ="startBtn">Start Quiz</button>
             </div>
 <!-------------Questions section-------->
           
             <div>
-                <div class="thequestions" id="the-questions">
+                <div class="questions" id="theQuestions">
                     <h2 id="question" ></h2>
                     <ul>
                         <li>
-                        <button class="options" id="btnanswer1" value="a">Answer1</button>
+                        <button class="options" id="btnAnswer1" value="a">Answer1</button>
                         </li>
                         <li>
-                        <button class="options" id="btnanswer2" value="b">Answer2</button>
+                        <button class="options" id="btnAnswer2" value="b">Answer2</button>
                         </li>
                         <li>
-                        <button class="options" id="btnanswer3" value="c">Answer3</button>
+                        <button class="options" id="btnAnswer3" value="c">Answer3</button>
                         </li>
                         <li>
-                        <button class="options" id="btnanswer4" value="d">Answer4</button>
+                        <button class="options" id="btnAnswer4" value="d">Answer4</button>
                         </li>
                     </ul>
 
@@ -68,20 +69,20 @@
             <div id="scores" class="hide">
                 <div class="highscores">
                     <h1 class="highscore">High Scores</h1>
-                    <ol id="highscore-list" class="list"></ol>
+                    <ol id="highscoreList" class="list"></ol>
                     <div>
                         <button class="button-gb" id="go-back">Go back</button>
                         <button class="button-gb" id="clear-hs">Clear high scores</button>
                     </div>
                 </div>
             </div>
-            <div id="feedback" class="feedback-c-w"></div>
+            <div id="feedback" class="feedback"></div>
     
 
    
-    </div>
+        </div>
     
-    
+    </main> 
     <script src="./assets/js/script.js"></script>
 </body>
 

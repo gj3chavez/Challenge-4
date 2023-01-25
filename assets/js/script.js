@@ -1,15 +1,14 @@
-var introSection = document.getElementById("#intro-section");
-var startBtn = document.querySelector("#start");
-var questionsSection = document.getElementById("#the-questions");
+var introSection = document.getElementById("introSection");
+var startBtn = document.querySelector("#startBtn");
+var questionsSection = document.getElementById("theQuestions");
 //var optionsList = document.getElementById("ul");
-var finishSection = document.getElementById("#finish");
-var finalScore = document.getElementById("#final-score");
-var scoreForm = document.getElementById("#initials");
-var highScoreList = document.getElementById("#highscore-list");
-var goBackButton = document.getElementById("#go-back");
-var clearHSButton = document.getElementById("#clear-hs");
+var finishSection = document.getElementById("#the-end");
+var finalScore = document.getElementById("final-score");
+var scoreForm = document.getElementById("initials");
+var highScoreList = document.getElementById("highscoreList");
+var goBackButton = document.getElementById("go-back");
+var clearHSButton = document.getElementById("clear-hs");
 var feedbackEl = document.getElementById("feedback");
-var timer = document.querySelector("#time");
 var questionEl = document.querySelector("#question");
 
 
@@ -43,30 +42,38 @@ var questions =[
     },
 ]
 startBtn.addEventListener("click", function(){
-    document.getElementById("time").style.display = "flex";
-    document.getElementById("intro-section").style.display = "none";
-    document.getElementById("the-questions").style.display = "none";
+    // document.getElementById("time").style.display = "flex";
+    document.getElementById("introSection").style.display = "none";
+    document.getElementById("theQuestions").style.display = "none";
    
-    setTimer();
-    displayQuestion()
+    // setTimer();
+    // displayQuestion()
 })
 //-------------start timer------------
+var timerEl = document.querySelector(".timer");
+var timeEl = document.getElementById("time")
+var secondsLeft = 30;
 
-var timeLeft = 60;
-var timer = document.querySelector("#time");
-
-function setTimer(){
-    timerInterval = setInterval(function(){
-        timeLeft--;
-        timer.textContent = timeLeft;
+var currentQuestion = 0;
+// function setTimer(){
+var timerInterval = setInterval(function(){
+        secondsLeft--;
+        timerEl.textContent =secondsLeft =
+        + "Time" ;
          
-        if (timer<= 0){
+        if (secondsLeft<= 0){
+            clearInterval();
+            // timer.textContent="All Done!"
+            endQuiz();
+        }else (questionEl>= questions.length + 1){
+            clearInterval(timerInterval);
             endQuiz();
         }
     },1000);
+
     
-} 
-let currentQuestion = 0;
+ 
+// let currentQuestion = 0;
 //---display first question-----
 //displayQuestion();
 
@@ -78,15 +85,15 @@ function displayQuestion(){
     var { question, options, correctAnswer} =
 questions[currentQuestion];
 
-document.getElementById('the-questions').style.display = "block"
+document.getElementById('theQuestions').style.display = "block"
 document.getElementById('finish').style.display = "none";
 
     questionEl.textContent = question;
 
     options.forEach(function(data,key){
         console.log("The key is "+ key)
-        var btn = document.querySelector(`#btnanswer${key+1}`);
-        console.log (document.querySelector(`#btnanswer${key+1}`))
+        var btn = document.querySelector(`#btnAnswer${key+1}`);
+        console.log (document.querySelector(`#btnAnswer${key+1}`))
         btn.textContent = options[key];
 
         btn.addEventListener("click", function(){
@@ -95,6 +102,8 @@ document.getElementById('finish').style.display = "none";
         });
     });
 }
+
+
 //----------feedback section-----------------
 
 function checkAnswer(userAnswer){
