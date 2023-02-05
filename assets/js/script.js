@@ -1,15 +1,22 @@
-var introSection = document.getElementById("introSection");
-var startBtn = document.querySelector("#startBtn");
-var questionsSection = document.getElementById("theQuestions");
-//var optionsList = document.getElementById("ul");
-var finishSection = document.getElementById("#the-end");
-var finalScore = document.getElementById("final-score");
-var scoreForm = document.getElementById("initials");
-var highScoreList = document.getElementById("highscoreList");
-var goBackButton = document.getElementById("go-back");
-var clearHSButton = document.getElementById("clear-hs");
-var feedbackEl = document.getElementById("feedback");
+var introSection = document.querySelector("#quiz");
+var startBtnEl = document.getElementById("startBtn"); startBtnEl.setAttribute('class','hide');
+var questionsSection = document.querySelector("#theQuestions");
+var quizSection = document.querySelector("#questions");
+//var optionsList = document.querySelector("ul");
+var initialsSection = document.querySelector("#initials-submit");
+var finalScore = document.querySelector("#final-score");
+var initialsEl = document.querySelector("initials");
+var highScore = document.querySelector("#theScores");
+var goBackButton = document.querySelector("#go-back");
+// var clearHSButton = document.querySelector("#clear-hs");
+var feedbackEl = document.querySelector("feedback");
 var questionEl = document.querySelector("#question");
+var buttonsEl = document.querySelectorAll('.options');
+var answer1El = document.querySelector('#btnAnswer1');
+var answer2El = document.querySelector('#btnAnswer2');
+var answer3El = document.querySelector('#btnAnswer3');
+var answer4El = document.querySelector('#btnAnswer4');
+var answer5El = document.querySelector('#btnAnswer5');
 
 
 //-------------------Questions---------------------------------
@@ -42,97 +49,101 @@ var questions =[
     },
 ]
 startBtn.addEventListener("click", function(){
-    // document.getElementById("time").style.display = "flex";
-    document.getElementById("introSection").style.display = "none";
-    document.getElementById("theQuestions").style.display = "none";
+    // document.querySelector("time").style.display = "flex";
+    document.querySelector("introSection").style.display = "none";
+    document.querySelector("theQuestions").style.display = "none";
    
     // setTimer();
     // displayQuestion()
 })
 //-------------start timer------------
-var timerEl = document.querySelector(".timer");
-var timeEl = document.getElementById("time")
-var secondsLeft = 30;
+var timeEl = document.getElementById("time");
 
+var secondsLeft = 30;
+var questionsCount = 1;
 var currentQuestion = 0;
 // function setTimer(){
 var timerInterval = setInterval(function(){
         secondsLeft--;
-        timerEl.textContent =secondsLeft =
-        + "Time" ;
+        timeLeft.textContent = "Time" = secondsLeft + "s";
          
         if (secondsLeft<= 0){
-            clearInterval();
+            clearInterval(timerInterval);
+            timeLeft.textContent = "All Done!"
             // timer.textContent="All Done!"
             endQuiz();
-        }else (questionEl>= questions.length + 1){
+        }else (questionsCount>= questions.length + 1){
             clearInterval(timerInterval);
             endQuiz();
         }
     },1000);
 
     
- 
-// let currentQuestion = 0;
+ function startQuiz(){
+    questionNumber = 0
+    countdown();
+    showQuestion(questionNumber);
+ }
+
 //---display first question-----
-//displayQuestion();
 
 
 
 
-function displayQuestion(){
-    //---get current question and its answers---
-    var { question, options, correctAnswer} =
-questions[currentQuestion];
 
-document.getElementById('theQuestions').style.display = "block"
-document.getElementById('finish').style.display = "none";
+// function displayQuestion(){
+//     //---get current question and its answers---
+//     var { question, options, correctAnswer} =
+// questions[currentQuestion];
 
-    questionEl.textContent = question;
+// document.querySelector('theQuestions').style.display = "block"
+// document.querySelector('finish').style.display = "none";
 
-    options.forEach(function(data,key){
-        console.log("The key is "+ key)
-        var btn = document.querySelector(`#btnAnswer${key+1}`);
-        console.log (document.querySelector(`#btnAnswer${key+1}`))
-        btn.textContent = options[key];
+//     questionEl.textContent = question;
 
-        btn.addEventListener("click", function(){
-            console.log(key)
-            checkAnswer(key);
-        });
-    });
-}
+//     options.forEach(function(data,key){
+//         console.log("The key is "+ key)
+//         var btn = document.querySelector(`#btnAnswer${key+1}`);
+//         console.log (document.querySelector(`#btnAnswer${key+1}`))
+//         btn.textContent = options[key];
+
+//         btn.addEventListener("click", function(){
+//             console.log(key)
+//             checkAnswer(key);
+//         });
+//     });
+// }
 
 
-//----------feedback section-----------------
+// //----------feedback section-----------------
 
-function checkAnswer(userAnswer){
-    var correctAnswer =
-questions[currentQuestion].correctAnswer;
+// function checkAnswer(userAnswer){
+//     var correctAnswer =
+// questions[currentQuestion].correctAnswer;
 
-if (userAnswer=== correctAnswer){
-   feedbackEl.textContent = "Correct!";
-    score++;
-}
-else {
-    feedbackEl.textContent = "Wrong!";
-    timer-=10;
-}
+// if (userAnswer=== correctAnswer){
+//    feedbackEl.textContent = "Correct!";
+//     score++;
+// }
+// else {
+//     feedbackEl.textContent = "Wrong!";
+//     timer-=10;
+// }
 
-currentQuestion++;
-if (currentQuestion=== questions.length){
-    endQuiz();
-}
-else{
-    displayQuestion();
-}
-}
+// currentQuestion++;
+// if (currentQuestion=== questions.length){
+//     endQuiz();
+// }
+// else{
+//     displayQuestion();
+// }
+// }
 
-function endQuiz(){
+// function endQuiz(){
 
-    document.getElementById("finish").classList.remove("hide");
+//     document.querySelector("finish").classList.remove("hide");
 
-    document.getElementById("final-score").textContent = "Your final score is ${score}";
-}
+//     document.querySelector("final-score").textContent = "Your final score is ${score}";
+// }
 
 
